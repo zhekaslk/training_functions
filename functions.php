@@ -1,21 +1,23 @@
 <?php
-function checkStringEntry($str1,  $str2) {   
-    $aaa = str_split($str1);
-    $bbb = str_split($str2);
+function checkStringEntry($substr,  $string) {
+    $arr_substr = str_split($substr);
+    $arr_str = str_split($string);
     $result = false;
-    for ($j = 0; $j < count($bbb)-count($aaa)+1; $j++) {
+    $poss_occ = count($arr_str)-count($arr_substr)+1; /// число возможных вхождений подстроки в строку
+    for ($j = 0; $j < $poss_occ; $j++) {
         $k = $j;
-        $schet = 0;
-        for ($i = 0; $i < count($aaa); $i++) {
-            if ($aaa[$i] == $bbb[$k]) {
+        $counter = 0;
+        for ($i = 0; $i < count($arr_substr); $i++) {
+            if ($arr_substr[$i] == $arr_str[$k]) {
                 $k++;
-                $schet++;
+                $counter++;
             }
         }
-        if ($schet == count($aaa)) {
+        if ($counter == count($arr_substr)) {
             $result = true;
+            break;
         }
     }
  return var_dump($result);
 }
-echo checkStringEntry("13", "12");
+echo checkStringEntry("12", "123");
