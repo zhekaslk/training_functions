@@ -6,14 +6,15 @@ function checkStringEntry($substr,  $string) {
     $poss_occ = count($arr_str)-count($arr_substr)+1; /// число возможных вхождений подстроки в строку
     for ($j = 0; $j < $poss_occ; $j++) {
         $k = $j;
-        $counter = 0;
         for ($i = 0; $i < count($arr_substr); $i++) {
             if ($arr_substr[$i] == $arr_str[$k]) {
                 $k++;
-                $counter++;
+            }
+            else {
+                break;
             }
         }
-        if ($counter == count($arr_substr)) {
+        if ($i == count($arr_substr)) {
             $result = true;
             break;
         }
